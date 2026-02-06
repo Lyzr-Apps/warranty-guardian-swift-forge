@@ -1,0 +1,26 @@
+{
+  "agent_name": "Warranty Intelligence Agent",
+  "agent_id": "6985991c7551cb7920ffe8fd",
+  "test_message": "Calculate warranty for: Product: Sony WH-1000XM5, Purchase Date: 2024-02-20, Warranty Period: 24 months",
+  "expected_purpose": "Calculate warranty end dates and filter warranty-applicable items",
+  "timestamp": "2026-02-06T07:36:46.447953",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "is_warranty_applicable": true,
+      "warranty_end_date": "2026-02-20",
+      "warranty_period_used": "24 months",
+      "fallback_applied": false,
+      "confidence": 1.0,
+      "category": "Electronics",
+      "exclusion_reason": null
+    },
+    "metadata": {
+      "agent_name": "Warranty Intelligence Agent",
+      "timestamp": "2023-11-27T14:45:00Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"is_warranty_applicable\": true,\n    \"warranty_end_date\": \"2026-02-20\",\n    \"warranty_period_used\": \"24 months\",\n    \"fallback_applied\": false,\n    \"confidence\": 1.0,\n    \"category\": \"Electronics\",\n    \"exclusion_reason\": null\n  },\n  \"metadata\": {\n    \"agent_name\": \"Warranty Intelligence Agent\",\n    \"timestamp\": \"2023-11-27T14:45:00Z\"\n  }\n}"
+}

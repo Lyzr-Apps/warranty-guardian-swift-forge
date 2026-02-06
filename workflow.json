@@ -1,0 +1,178 @@
+{
+  "workflow": {
+    "name": "Warranty Guardian",
+    "description": "Manager-Subagent pattern for invoice processing and warranty claim management",
+    "pattern": "Manager-Subagent",
+    "nodes": [
+      {
+        "id": "input_node",
+        "type": "Input",
+        "label": "User Input",
+        "nodeCategory": "input"
+      },
+      {
+        "id": "warranty_orchestrator",
+        "type": "Agent",
+        "label": "Warranty Orchestrator Manager",
+        "nodeCategory": "agent",
+        "agent_id": "698599787551cb7920ffe918",
+        "agent_type": "Manager"
+      },
+      {
+        "id": "invoice_parser",
+        "type": "Agent",
+        "label": "Invoice Parser Agent",
+        "nodeCategory": "agent",
+        "agent_id": "69859905fe576c19864be927",
+        "agent_type": "Sub-Agent"
+      },
+      {
+        "id": "warranty_intelligence",
+        "type": "Agent",
+        "label": "Warranty Intelligence Agent",
+        "nodeCategory": "agent",
+        "agent_id": "6985991c7551cb7920ffe8fd",
+        "agent_type": "Sub-Agent"
+      },
+      {
+        "id": "asset_classifier",
+        "type": "Agent",
+        "label": "Asset Classifier Agent",
+        "nodeCategory": "agent",
+        "agent_id": "698599327551cb7920ffe90b",
+        "agent_type": "Sub-Agent"
+      },
+      {
+        "id": "claim_drafting",
+        "type": "Agent",
+        "label": "Claim Drafting Agent",
+        "nodeCategory": "agent",
+        "agent_id": "69859953ab4bf65a66ad08d3",
+        "agent_type": "Independent"
+      },
+      {
+        "id": "output_node",
+        "type": "Output",
+        "label": "Output",
+        "nodeCategory": "end"
+      }
+    ],
+    "edges": [
+      {
+        "source": "input_node",
+        "target": "warranty_orchestrator"
+      },
+      {
+        "source": "warranty_orchestrator",
+        "target": "invoice_parser"
+      },
+      {
+        "source": "warranty_orchestrator",
+        "target": "warranty_intelligence"
+      },
+      {
+        "source": "warranty_orchestrator",
+        "target": "asset_classifier"
+      },
+      {
+        "source": "input_node",
+        "target": "claim_drafting"
+      },
+      {
+        "source": "invoice_parser",
+        "target": "output_node"
+      },
+      {
+        "source": "warranty_intelligence",
+        "target": "output_node"
+      },
+      {
+        "source": "asset_classifier",
+        "target": "output_node"
+      },
+      {
+        "source": "claim_drafting",
+        "target": "output_node"
+      }
+    ]
+  },
+  "agents": {
+    "warranty_orchestrator": {
+      "agent_id": "698599787551cb7920ffe918",
+      "name": "Warranty Orchestrator",
+      "description": "Coordinates invoice processing workflow—routes uploaded documents through parsing, warranty calculation, and classification sub-agents, then aggregates results into unified product entry with confidence scoring",
+      "type": "Manager",
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "temperature": 0.3,
+      "top_p": 1,
+      "trigger": "Process Invoice on Upload Screen",
+      "managed_agents": [
+        "69859905fe576c19864be927",
+        "6985991c7551cb7920ffe8fd",
+        "698599327551cb7920ffe90b"
+      ]
+    },
+    "invoice_parser": {
+      "agent_id": "69859905fe576c19864be927",
+      "name": "Invoice Parser Agent",
+      "description": "Multimodal extraction agent that processes PDF/image invoices to extract brand, product name, purchase date, invoice ID, and warranty terms with strict no-hallucination rules and confidence scoring for each field",
+      "type": "Sub-Agent",
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "temperature": 0.2,
+      "top_p": 1,
+      "trigger": "Auto (via Manager)",
+      "tools": ["Vision processing"]
+    },
+    "warranty_intelligence": {
+      "agent_id": "6985991c7551cb7920ffe8fd",
+      "name": "Warranty Intelligence Agent",
+      "description": "Calculates warranty end dates using extracted data, applies industry-standard fallbacks when warranty period unclear, determines confidence level, and filters out non-warranty items (groceries, books) using smart categorization",
+      "type": "Sub-Agent",
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "temperature": 0.3,
+      "top_p": 1,
+      "trigger": "Auto (via Manager)",
+      "data_sources": ["Knowledge Base (warranty policies)"]
+    },
+    "asset_classifier": {
+      "agent_id": "698599327551cb7920ffe90b",
+      "name": "Asset Classifier Agent",
+      "description": "Assigns color status (Green: Active, Yellow: Expiring within 30 days, Red: Expired), generates \"Please verify\" badges for low-confidence items, and structures data for dashboard display",
+      "type": "Sub-Agent",
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "temperature": 0.2,
+      "top_p": 1,
+      "trigger": "Auto (via Manager)",
+      "integrations": [
+        {
+          "name": "whatsapp",
+          "tool_source": "custom",
+          "actions": ["send_template_message", "send_notification"]
+        }
+      ]
+    },
+    "claim_drafting": {
+      "agent_id": "69859953ab4bf65a66ad08d3",
+      "name": "Claim Drafting Agent",
+      "description": "Generates professional warranty claim emails including Consumer Protection Act 2019 references, legal escalation language, brand-specific warranty contacts, nearest service center details, timeline expectations, and attachment reminders",
+      "type": "Independent",
+      "provider": "OpenAI",
+      "model": "gpt-4o",
+      "temperature": 0.4,
+      "top_p": 1,
+      "trigger": "Fix it button on Product Card",
+      "data_sources": ["Knowledge Base (consumer law, brand contacts, service centers)"],
+      "integrations": [
+        {
+          "name": "gmail",
+          "tool_source": "composio",
+          "actions": ["GMAIL_SEND_EMAIL"]
+        }
+      ]
+    }
+  }
+}

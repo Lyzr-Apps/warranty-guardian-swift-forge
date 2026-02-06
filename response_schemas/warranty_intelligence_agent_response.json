@@ -1,0 +1,58 @@
+{
+  "agent_name": "Warranty Intelligence Agent",
+  "agent_id": "6985991c7551cb7920ffe8fd",
+  "agent_purpose": "warranty_calculation",
+  "description": "Calculates warranty end dates and filters non-warranty items with intelligent fallbacks",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "is_warranty_applicable": "boolean",
+      "warranty_end_date": "string",
+      "warranty_period_used": "string",
+      "fallback_applied": "boolean",
+      "confidence": "number",
+      "category": "string",
+      "exclusion_reason": "null"
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "is_warranty_applicable": true,
+      "warranty_end_date": "2026-02-20",
+      "warranty_period_used": "24 months",
+      "fallback_applied": false,
+      "confidence": 1.0,
+      "category": "Electronics",
+      "exclusion_reason": null
+    },
+    "metadata": {
+      "agent_name": "Warranty Intelligence Agent",
+      "timestamp": "2023-11-27T14:45:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-06T07:36:46.448368",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "is_warranty_applicable": true,
+      "warranty_end_date": "2026-02-20",
+      "warranty_period_used": "24 months",
+      "fallback_applied": false,
+      "confidence": 1.0,
+      "category": "Electronics",
+      "exclusion_reason": null
+    },
+    "metadata": {
+      "agent_name": "Warranty Intelligence Agent",
+      "timestamp": "2023-11-27T14:45:00Z"
+    }
+  },
+  "test_passed": true
+}

@@ -1,0 +1,97 @@
+{
+  "agent_name": "Invoice Parser Agent",
+  "agent_id": "69859905fe576c19864be927",
+  "agent_purpose": "invoice_parsing",
+  "description": "Extracts structured invoice data with confidence scoring for warranty tracking",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "brand": {
+        "value": "string",
+        "confidence": "number"
+      },
+      "product_name": {
+        "value": "string",
+        "confidence": "number"
+      },
+      "purchase_date": {
+        "value": "string",
+        "confidence": "number"
+      },
+      "invoice_id": {
+        "value": "string",
+        "confidence": "number"
+      },
+      "warranty_terms": {
+        "value": "string",
+        "confidence": "number"
+      }
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "brand": {
+        "value": "Apple",
+        "confidence": 1.0
+      },
+      "product_name": {
+        "value": "iPhone 15 Pro",
+        "confidence": 1.0
+      },
+      "purchase_date": {
+        "value": "2024-01-15",
+        "confidence": 0.9
+      },
+      "invoice_id": {
+        "value": "INV-12345",
+        "confidence": 1.0
+      },
+      "warranty_terms": {
+        "value": "1 Year",
+        "confidence": 1.0
+      }
+    },
+    "metadata": {
+      "agent_name": "Invoice Parser Agent",
+      "timestamp": "2023-11-27T12:23:49.000Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-06T07:36:40.955486",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "brand": {
+        "value": "Apple",
+        "confidence": 1.0
+      },
+      "product_name": {
+        "value": "iPhone 15 Pro",
+        "confidence": 1.0
+      },
+      "purchase_date": {
+        "value": "2024-01-15",
+        "confidence": 0.9
+      },
+      "invoice_id": {
+        "value": "INV-12345",
+        "confidence": 1.0
+      },
+      "warranty_terms": {
+        "value": "1 Year",
+        "confidence": 1.0
+      }
+    },
+    "metadata": {
+      "agent_name": "Invoice Parser Agent",
+      "timestamp": "2023-11-27T12:23:49.000Z"
+    }
+  },
+  "test_passed": true
+}

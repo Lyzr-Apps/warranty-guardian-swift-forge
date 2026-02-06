@@ -1,0 +1,47 @@
+{
+  "agent_name": "Claim Drafting Agent",
+  "agent_id": "69859953ab4bf65a66ad08d3",
+  "agent_purpose": "claim_drafting",
+  "description": "Generates professional warranty claim emails with Consumer Protection Act references and service center information",
+  "response_schema": {
+    "status": "string (success|error)",
+    "result": {
+      "response": "string",
+      "action_taken": "string (optional)",
+      "data": "object (optional, any structured data)",
+      "suggestions": [
+        "string (optional)"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string (ISO)"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "response": "I've completed the task you requested",
+      "action_taken": "Processed the input and generated output",
+      "data": {
+        "key": "value"
+      },
+      "suggestions": [
+        "You might also want to try X"
+      ]
+    },
+    "metadata": {
+      "agent_name": "Claim Drafting Agent",
+      "timestamp": "2025-01-15T10:30:00Z"
+    }
+  },
+  "is_actual_tested": false,
+  "test_timestamp": "2026-02-06T07:39:45.083942",
+  "test_message_used": "Hello, provide a sample response",
+  "raw_test_response": "I have created a sample warranty claim email for you. You can access the details by referring to the artifact named **Sample Warranty Claim Email**. If you'd like to see the content or need additional assistance, please let me know!",
+  "test_error": "Response not valid JSON: Expecting value: line 1 column 1 (char 0)",
+  "actual_test_response": {
+    "raw_text": "{\n  \"email_subject\": \"Warranty Claim for LG Refrigerator Model ABC123 - Invoice INV-LG-8899\",\n  \"email_body\": \"Dear LG Customer Support,\n\nI hope this message finds you well. I am writing to formally lodge a warranty claim for my LG Refrigerator, Model ABC123, purchased on August 15, 2023, with Invoice ID: INV-LG-8899. Unfortunately, I have encountered an issue where the cooling function is not working, which significantly affects the usability of the product.\n\nAccording to the Consumer Protection Act 2019, Section 2(10), consumers are entitled to a remedy for unsatisfactory services and product faults during the warranty period. Given that my refrigerator is still within the warranty period, ending on August 15, 2024, I kindly request that you address this issue by either repairing or replacing the unit at your earliest convenience.\n\nI would appreciate a response within 10 days from the date of this email. If the issue is not resolved satisfactorily, I may consider escalating the matter further. \n\nFor your reference, I will attach a copy of the invoice, product photos, and warranty card to this email.\n\nPlease advise the next steps and the most convenient LG service center to visit or arrange for a pickup.\n\nThank you for your attention to this matter.\n\nSincerely,\n\n[Your Name]\n[Your Contact Information]\",\n  \"recipient_email\": \"support@lge.com\",\n  \"cc_emails\": [\"customer.care@lge.com\"],\n  \"legal_references\": \"Consumer Protection Act 2019, Section 2(10)\",\n  \"service_center_name\": \"LG Service Center\",\n  \"service_center_address\": \"123 Main Road, Sector 15, Gurgaon, Haryana, India\",\n  \"service_center_phone\": \"+91-124-4567890\",\n  \"service_center_distance_km\": 15,\n  \"attachments_required\": [\"Invoice copy\", \"Product photos\", \"Warranty card\"],\n  \"expected_response_days\": 10,\n  \"escalation_options\": [\"Consumer Forum\", \"Brand Grievance Cell\"]\n}"
+  },
+  "test_passed": false
+}

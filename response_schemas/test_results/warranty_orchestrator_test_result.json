@@ -1,0 +1,29 @@
+{
+  "agent_name": "Warranty Orchestrator",
+  "agent_id": "698599787551cb7920ffe918",
+  "test_message": "Process this invoice: Brand: Samsung, Product: Galaxy S23 Ultra, Purchase Date: 2024-01-15, Invoice ID: INV-2024-001, Warranty Period: 12 months",
+  "expected_purpose": "Manager agent that coordinates invoice processing workflow",
+  "timestamp": "2026-02-06T07:39:19.543603",
+  "is_valid_json": true,
+  "validation_errors": [
+    "Missing 'status' field",
+    "Missing 'result' field",
+    "Missing 'metadata' field (optional but recommended)"
+  ],
+  "actual_response": {
+    "brand": "Samsung",
+    "product_name": "Galaxy S23 Ultra",
+    "purchase_date": "2024-01-15",
+    "invoice_id": "INV-2024-001",
+    "warranty_period_months": 12,
+    "warranty_end_date": "2025-01-15",
+    "status_color": "GREEN",
+    "status_message": "Warranty is active",
+    "days_remaining": 365,
+    "overall_confidence": 0.95,
+    "verification_required": false,
+    "fields_to_verify": [],
+    "alert_trigger": false
+  },
+  "raw_response": "{\n  \"brand\": \"Samsung\",\n  \"product_name\": \"Galaxy S23 Ultra\",\n  \"purchase_date\": \"2024-01-15\",\n  \"invoice_id\": \"INV-2024-001\",\n  \"warranty_period_months\": 12,\n  \"warranty_end_date\": \"2025-01-15\",\n  \"status_color\": \"GREEN\",\n  \"status_message\": \"Warranty is active\",\n  \"days_remaining\": 365,\n  \"overall_confidence\": 0.95,\n  \"verification_required\": false,\n  \"fields_to_verify\": [],\n  \"alert_trigger\": false\n}"
+}

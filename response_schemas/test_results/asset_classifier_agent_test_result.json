@@ -1,0 +1,24 @@
+{
+  "agent_name": "Asset Classifier Agent",
+  "agent_id": "698599327551cb7920ffe90b",
+  "test_message": "Classify warranty status: Product: Dell XPS 15, Purchase Date: 2023-12-10, Warranty End Date: 2024-12-10",
+  "expected_purpose": "Assign color status (Green/Yellow/Red) and generate verify badges",
+  "timestamp": "2026-02-06T07:39:29.765734",
+  "is_valid_json": true,
+  "validation_errors": [
+    "Missing 'status' field",
+    "Missing 'result' field",
+    "Missing 'metadata' field (optional but recommended)"
+  ],
+  "actual_response": {
+    "status_color": "GREEN",
+    "status_message": "Active - 308 days remaining",
+    "days_remaining": 308,
+    "verification_required": false,
+    "verification_badge_text": null,
+    "fields_to_verify": [],
+    "alert_trigger": false,
+    "alert_message": null
+  },
+  "raw_response": "{\n  \"status_color\": \"GREEN\",\n  \"status_message\": \"Active - 308 days remaining\",\n  \"days_remaining\": 308,\n  \"verification_required\": false,\n  \"verification_badge_text\": null,\n  \"fields_to_verify\": [],\n  \"alert_trigger\": false,\n  \"alert_message\": null\n}"
+}

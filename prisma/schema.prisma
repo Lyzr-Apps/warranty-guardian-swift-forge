@@ -1,0 +1,33 @@
+// Prisma schema for Warranty Guardian
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id                      String   @id @default(cuid())
+  brand                   String
+  product_name            String
+  purchase_date           String
+  invoice_id              String
+  warranty_end_date       String
+  warranty_period_months  Int
+  status_color            String   // GREEN, YELLOW, RED
+  status_message          String
+  days_remaining          Int
+  overall_confidence      Float
+  verification_required   Boolean  @default(false)
+  fields_to_verify        String[] // Array of field names that need verification
+  alert_trigger           Boolean  @default(false)
+  created_at              DateTime @default(now())
+  updated_at              DateTime @updatedAt
+
+  @@index([status_color])
+  @@index([warranty_end_date])
+  @@index([created_at])
+}

@@ -1,0 +1,42 @@
+{
+  "agent_name": "Asset Classifier Agent",
+  "agent_id": "698599327551cb7920ffe90b",
+  "agent_purpose": "status_classification",
+  "description": "Classifies warranty status with color codes and prepares dashboard-ready data with verification flags",
+  "response_schema": {
+    "status_color": "string",
+    "status_message": "string",
+    "days_remaining": "number",
+    "verification_required": "boolean",
+    "verification_badge_text": "null",
+    "fields_to_verify": [
+      "any"
+    ],
+    "alert_trigger": "boolean",
+    "alert_message": "null"
+  },
+  "example_response": {
+    "status_color": "GREEN",
+    "status_message": "Active - 308 days remaining",
+    "days_remaining": 308,
+    "verification_required": false,
+    "verification_badge_text": null,
+    "fields_to_verify": [],
+    "alert_trigger": false,
+    "alert_message": null
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-06T07:39:29.766524",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status_color": "GREEN",
+    "status_message": "Active - 308 days remaining",
+    "days_remaining": 308,
+    "verification_required": false,
+    "verification_badge_text": null,
+    "fields_to_verify": [],
+    "alert_trigger": false,
+    "alert_message": null
+  },
+  "test_passed": false
+}

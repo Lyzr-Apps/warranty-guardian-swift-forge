@@ -1,0 +1,57 @@
+{
+  "agent_name": "Warranty Orchestrator",
+  "agent_id": "698599787551cb7920ffe918",
+  "agent_purpose": "workflow_orchestration",
+  "description": "Orchestrates invoice processing workflow by coordinating sub-agents and aggregating results into unified product entry",
+  "response_schema": {
+    "brand": "string",
+    "product_name": "string",
+    "purchase_date": "string",
+    "invoice_id": "string",
+    "warranty_period_months": "number",
+    "warranty_end_date": "string",
+    "status_color": "string",
+    "status_message": "string",
+    "days_remaining": "number",
+    "overall_confidence": "number",
+    "verification_required": "boolean",
+    "fields_to_verify": [
+      "any"
+    ],
+    "alert_trigger": "boolean"
+  },
+  "example_response": {
+    "brand": "Samsung",
+    "product_name": "Galaxy S23 Ultra",
+    "purchase_date": "2024-01-15",
+    "invoice_id": "INV-2024-001",
+    "warranty_period_months": 12,
+    "warranty_end_date": "2025-01-15",
+    "status_color": "GREEN",
+    "status_message": "Warranty is active",
+    "days_remaining": 365,
+    "overall_confidence": 0.95,
+    "verification_required": false,
+    "fields_to_verify": [],
+    "alert_trigger": false
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-06T07:39:19.544253",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "brand": "Samsung",
+    "product_name": "Galaxy S23 Ultra",
+    "purchase_date": "2024-01-15",
+    "invoice_id": "INV-2024-001",
+    "warranty_period_months": 12,
+    "warranty_end_date": "2025-01-15",
+    "status_color": "GREEN",
+    "status_message": "Warranty is active",
+    "days_remaining": 365,
+    "overall_confidence": 0.95,
+    "verification_required": false,
+    "fields_to_verify": [],
+    "alert_trigger": false
+  },
+  "test_passed": false
+}
