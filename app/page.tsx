@@ -69,9 +69,15 @@ function Notification({ message, type, onClose }: { message: string; type: 'succ
 
 // Countdown Ring Component
 function CountdownRing({ daysRemaining, totalDays, statusColor }: { daysRemaining: number; totalDays: number; statusColor: string }) {
-  const percentage = Math.max(0, Math.min(100, (daysRemaining / totalDays) * 100))
+  // Ensure we have valid numbers and avoid division by zero
+  const safeDaysRemaining = Number.isFinite(daysRemaining) ? daysRemaining : 0
+  const safeTotalDays = Number.isFinite(totalDays) && totalDays > 0 ? totalDays : 365
+
+  const percentage = Math.max(0, Math.min(100, (safeDaysRemaining / safeTotalDays) * 100))
   const circumference = 2 * Math.PI * 28
-  const strokeDashoffset = circumference - (percentage / 100) * circumference
+  const strokeDashoffset = Number.isFinite(percentage)
+    ? circumference - (percentage / 100) * circumference
+    : circumference
 
   const gradientId = `gradient-${Math.random().toString(36).substr(2, 9)}`
   const gradient = statusColor === 'GREEN'
@@ -112,7 +118,7 @@ function CountdownRing({ daysRemaining, totalDays, statusColor }: { daysRemainin
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-white text-xs font-semibold">{daysRemaining}d</span>
+        <span className="text-white text-xs font-semibold">{safeDaysRemaining}d</span>
       </div>
     </div>
   )
